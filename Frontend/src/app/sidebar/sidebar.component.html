@@ -1,0 +1,35 @@
+<div id="nav-bar">
+  <input type="checkbox" id="nav-toggle" />
+  <div id="nav-header">
+    <h2 id="nav-title">Menu</h2>
+    <label for="nav-toggle">
+      <div id="nav-toggle-burger"></div>
+    </label>
+  </div>
+  <div id="nav-content">
+    <div id="nav-content-highlight"></div>
+    <a routerLink="/menu/home">
+      <div class="nav-button">
+        <span>Αρχική σελίδα</span>
+      </div>
+    </a>
+    <a routerLink="/menu/tasks">
+      <div class="nav-button">
+        <span>Τα tasks μου</span>
+      </div>
+    </a>
+    <a routerLink="/menu/profile">
+      <div class="nav-button">
+        <span>Το προφίλ μου</span>
+      </div>
+    </a>
+    <a routerLink="/menu/users">
+      <div class="nav-button">
+        <span>Χρήστες</span>
+      </div>
+    </a>
+  </div>
+  <div id="nav-footer">
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+</div>

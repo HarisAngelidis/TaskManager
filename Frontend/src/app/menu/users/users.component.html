@@ -1,0 +1,14 @@
+
+<div class="container" *ngIf="isAdmin">
+  <h2>Λίστα Χρηστών</h2>
+  <ul>
+    <li *ngFor="let user of users">
+      <div class="user-item">
+        <p><strong>Username:</strong> {{ user.Username }}</p>
+        <p><strong>First Name:</strong> {{ user.FirstName }}</p>
+        <p><strong>Last Name:</strong> {{ user.LastName }}</p>
+        <p><strong>Role:</strong> {{ user.RoleId }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

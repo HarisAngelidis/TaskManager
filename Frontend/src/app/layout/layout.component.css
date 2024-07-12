@@ -1,0 +1,10 @@
+.content {
+    margin-left: 200px;
+    transition: margin-left 0.3s;
+    
+  }
+  
+  .sidebar.closed + .content {
+    margin-left: 50px;
+  }
+  

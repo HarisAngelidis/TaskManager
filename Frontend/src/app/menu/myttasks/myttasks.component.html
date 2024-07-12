@@ -1,0 +1,54 @@
+
+<div class="container">
+  <h2>Task Manager</h2>
+
+  <div class="row">
+ 
+    <div class="column tasks-list">
+      <h3>Τα Tasks Μου</h3>
+      <ul>
+        <li *ngFor="let task of tasks">
+          <div class="task-item">
+            <h4>{{ task.title }}</h4>
+            <p>{{ task.description }}</p>
+            <div class="task-actions">
+              <button (click)="editTask(task)">Επεξεργασία</button>
+              <button (click)="deleteTask(task.id)">Διαγραφή</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+   
+    <div class="column forms">
+      
+      <div class="form-card">
+        <h3>Προσθήκη Task</h3>
+        <form [formGroup]="addTaskForm" (ngSubmit)="onAddSubmit()">
+          <label for="add-title">Τίτλος</label>
+          <input id="add-title" formControlName="title">
+          
+          <label for="add-description">Περιγραφή</label>
+          <input id="add-description" formControlName="description">
+          
+          <button type="submit">Προσθήκη Task</button>
+        </form>
+      </div>
+
+
+      <div class="form-card" *ngIf="editTaskForm">
+        <h3>Επεξεργασία Task</h3>
+        <form [formGroup]="editTaskForm" (ngSubmit)="onEditSubmit()">
+          <label for="edit-title">Τίτλος</label>
+          <input id="edit-title" formControlName="title">
+          
+          <label for="edit-description">Περιγραφή</label>
+          <input id="edit-description" formControlName="description">
+          
+          <button type="submit">Ενημέρωση Task</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
