@@ -32,7 +32,8 @@ import { TaskService } from '../../task.service';
     MatIcon,
     MatSort,
     MatSortHeader,
-    MatSortModule
+    MatSortModule,
+    MatInputModule
   ],
   templateUrl: './myttasks.component.html',
   styleUrls: ['./myttasks.component.css']
@@ -56,6 +57,14 @@ export class MyTasksComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   loadTasks(): void {
