@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../user.service';
+import moment from 'moment';
 
 @Component({
   selector: 'app-profile',
@@ -21,14 +22,14 @@ export class ProfileComponent {
     const storedUser = localStorage.getItem('authUser');
     console.log(storedUser);
     this.user = JSON.parse(storedUser || '{}');
-    console.log(this.user);
+
 
     this.profileForm = new FormGroup({
       
       LastName: new FormControl(this.user.LastName, [Validators.required]),
       FirstName: new FormControl(this.user.FirstName, [Validators.required]),
       Age: new FormControl(this.user.Age, [Validators.required, Validators.min(1)]),
-      DateOfBirth: new FormControl(this.user.DateOfBirth, [Validators.required]),
+      DateOfBirth: new FormControl(moment(this.user.DateOfBirth).format('YYYY-MM-DD'), [Validators.required]),
       Username: new FormControl(this.user.Username, [Validators.required]),
       Password : new FormControl(this.user.Password, [Validators.required])
       

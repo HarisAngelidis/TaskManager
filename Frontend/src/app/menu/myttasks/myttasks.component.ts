@@ -1,82 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginator } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { TaskService } from '../../task.service';
 
 @Component({
   selector: 'app-myttasks',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, MatButtonModule, MatInputModule, MatCardModule, MatListModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatListModule,
+    MatTableModule,
+    MatDialogModule,
+    MatPaginator,
+    MatIcon,
+    MatSort,
+    MatSortHeader,
+    MatSortModule
+  ],
   templateUrl: './myttasks.component.html',
   styleUrls: ['./myttasks.component.css']
 })
 export class MyTasksComponent implements OnInit {
-  tasks: any[] = [];
-  addTaskForm: FormGroup;
-  editTaskForm: FormGroup | null = null;
-
+  displayedColumns: string[] = ['title', 'description', 'actions'];
+  dataSource = new MatTableDataSource<any>([]);
   storedUser = localStorage.getItem('authUser');
   user: any = JSON.parse(this.storedUser || '{}');
-
   userId: number = this.user.UserId;
 
-  constructor(private fb: FormBuilder, private taskService: TaskService) {
-    this.addTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      userId: [this.userId]
-    });
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-    this.editTaskForm = this.fb.group({
-      id: [null],
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      userId: [this.userId]
-    });
-  }
+  constructor(private fb: FormBuilder, private taskService: TaskService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadTasks();
   }
 
-  loadTasks(): void {
-    
-    this.taskService.getTasks(this.userId).subscribe((tasks: any) => {
-      console.log(tasks[0].title); 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
-      this.tasks = tasks;
+  loadTasks(): void {
+    this.taskService.getTasks(this.userId).subscribe((tasks: any) => {
+      this.dataSource.data = tasks;
     });
   }
 
-  onAddSubmit(): void {
-    if (this.addTaskForm.valid) {
-      this.taskService.addTask(this.addTaskForm.value).subscribe(() => {
-        this.loadTasks();
-        this.addTaskForm.reset({ userId: this.userId });
-      });
-    }
-  }
+  openDialog(task: any = null): void {
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '400px',
+      data: task ? { ...task } : { title: '', description: '', userId: this.userId }
+    });
 
-  onEditSubmit(): void {
-    if (this.editTaskForm && this.editTaskForm.valid) {
-      this.taskService.updateTask(this.editTaskForm.value.id, this.editTaskForm.value).subscribe(() => {
-        this.loadTasks();
-        this.editTaskForm!.reset({ userId: this.userId });
-        //this.editTaskForm = null;
-      });
-    }
-  }
-
-  editTask(task: any): void {
-    console.log(task);
-    
-    this.editTaskForm?.patchValue(task);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.id) {
+          this.taskService.updateTask(result.id, result).subscribe(() => this.loadTasks());
+        } else {
+          this.taskService.addTask(result).subscribe(() => this.loadTasks());
+        }
+      }
+    });
   }
 
   deleteTask(taskId: number): void {
