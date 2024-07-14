@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ],
   templateUrl: './task-dialog.component.html',
-  styleUrls: ['./task-dialog.component.css']
+  styleUrls: ['./task-dialog.component.scss']
 })
 export class TaskDialogComponent {
   taskForm: FormGroup;
@@ -29,7 +29,8 @@ export class TaskDialogComponent {
       id: [data.id || null],
       title: [data.title, Validators.required],
       description: [data.description, Validators.required],
-      userId: [data.userId]
+      userId: [data.userId],
+      statusId : [1]
     });
   }
 

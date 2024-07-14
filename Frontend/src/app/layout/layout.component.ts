@@ -1,4 +1,4 @@
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -8,7 +8,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   standalone: true,
   imports: [SidebarComponent,RouterOutlet],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
 

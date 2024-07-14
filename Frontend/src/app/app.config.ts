@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, withInterceptors } from '@angular/common/http';
 import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
 
 import { ApplicationConfig } from '@angular/core';
@@ -12,7 +12,8 @@ import { withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideClientHydration(),provideHttpClient(withFetch()), provideAnimationsAsync()
-    ,HttpClientModule,AuthInterceptor, provideAnimationsAsync(),MatSortModule,MatSort,MatSortHeader
+    ,HttpClientModule, provideAnimationsAsync(),MatSortModule,MatSort,MatSortHeader,
+    provideHttpClient(withInterceptors([AuthInterceptor]))
     
   ]
 };

@@ -1,15 +1,16 @@
-import { AuthService } from '../auth/auth.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HomeComponent } from '../menu/home/home.component';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule,RouterLink,HomeComponent],
+  imports: [CommonModule,RouterLink,HomeComponent,RouterLinkActive],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
 

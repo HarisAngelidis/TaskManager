@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
 import moment from 'moment';
 
 @Component({
@@ -11,7 +11,7 @@ import moment from 'moment';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
   user: any;

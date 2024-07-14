@@ -5,14 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-text-input',
   templateUrl: './display.component.html',
-  styleUrls: ['./display.component.css'],
+  styleUrls: ['./display.component.scss'],
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule,ReactiveFormsModule, RouterModule] // Εισάγετε το HttpClientModule εδώ
+  imports: [FormsModule, CommonModule, HttpClientModule,ReactiveFormsModule, RouterModule] 
 })
 export class DisplayComponent implements OnInit {
   userInput: string = '';

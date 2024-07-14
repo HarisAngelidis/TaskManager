@@ -3,7 +3,6 @@ import { NavigationEnd, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DisplayComponent } from './display/display.component';
-import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet,DisplayComponent,CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 
 

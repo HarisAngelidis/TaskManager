@@ -1,4 +1,4 @@
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 import { CanActivateFn } from '@angular/router';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';

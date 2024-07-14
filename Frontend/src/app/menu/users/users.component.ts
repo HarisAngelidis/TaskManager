@@ -4,14 +4,13 @@ import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router, RouterLink } from '@angular/router';
 
-import { AuthInterceptor } from '../../auth.interceptor';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -30,7 +29,7 @@ import { UserService } from '../../user.service';
     MatSortHeader,MatSort
   ],
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['lastName', 'firstName', 'age', 'dateOfBirth', 'username'];

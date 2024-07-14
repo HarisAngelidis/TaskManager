@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { inject } from '@angular/core';
@@ -11,7 +11,7 @@ import { inject } from '@angular/core';
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule,CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.scss',
   host: {ngSkipHydration: 'true'},
 })
 export class LoginComponent {

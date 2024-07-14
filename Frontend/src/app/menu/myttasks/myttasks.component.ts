@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginator } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
-import { TaskService } from '../../task.service';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-myttasks',
@@ -36,7 +36,7 @@ import { TaskService } from '../../task.service';
     MatInputModule
   ],
   templateUrl: './myttasks.component.html',
-  styleUrls: ['./myttasks.component.css']
+  styleUrls: ['./myttasks.component.scss']
 })
 export class MyTasksComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'actions'];
