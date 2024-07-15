@@ -23,6 +23,10 @@ export class TaskService {
     return this.http.put(`${this.baseUrl}/${taskId}`, task);
   }
 
+  updateStatus(taskId:number,task: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${taskId}/status`, task);
+  }
+
   deleteTask(taskId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${taskId}`);
   }

@@ -1,4 +1,4 @@
-<div>
+<!--<div>
   <mat-form-field class="example-form-field">
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Enter keyword">
@@ -38,5 +38,73 @@
 
 <button mat-raised-button color="primary" (click)="openDialog()" style="position: fixed; top: 20px; right: 20px;">
   Add Task
-</button>
+</button>-->
+
+<div class="task-container">
+  <div class="task-header">
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search Tasks">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort>
+
+
+    <ng-container matColumnDef="userId" *ngIf="isAdmin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>User ID</th>
+      <td mat-cell *matCellDef="let task">{{ task.userId }}</td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let task">{{ task.title }}</td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let task">{{ task.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let task">
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select [(value)]="task.statusId" (selectionChange)="changeStatus(task)">
+            <mat-option *ngFor="let option of statusOptions" [value]="option.value">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+      
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let task">
+        <button mat-icon-button (click)="openDialog(task)" matTooltip="Edit task">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteTask(task.id)" matTooltip="Delete task">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+  <button mat-raised-button color="primary" (click)="openDialog()" style="position: fixed; top: 20px; right: 20px;">
+    Add Task
+  </button>
+</div>
+
 

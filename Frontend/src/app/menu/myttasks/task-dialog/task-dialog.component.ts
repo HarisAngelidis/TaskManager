@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatOption } from '@angular/material/core';
 
 @Component({
   selector: 'app-task-dialog',
@@ -12,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatOption 
   ],
   templateUrl: './task-dialog.component.html',
   styleUrls: ['./task-dialog.component.scss']
@@ -30,7 +32,7 @@ export class TaskDialogComponent {
       title: [data.title, Validators.required],
       description: [data.description, Validators.required],
       userId: [data.userId],
-      statusId : [1]
+      //statusId: [data.statusId, Validators.required],
     });
   }
 

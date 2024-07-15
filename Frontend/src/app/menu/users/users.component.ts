@@ -32,7 +32,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['lastName', 'firstName', 'age', 'dateOfBirth', 'username'];
+  displayedColumns: string[] = ['userId','lastName', 'firstName', 'age', 'dateOfBirth', 'username'];
   dataSource = new MatTableDataSource<any>([]);
   isAdmin: boolean = false;
   storedUser = localStorage.getItem('authUser');

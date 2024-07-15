@@ -1,18 +1,4 @@
 
-<!--<div class="container" *ngIf="isAdmin">
-  <h2>Λίστα Χρηστών</h2>
-  <ul>
-    <li *ngFor="let user of users">
-      <div class="user-item">
-        <p><strong>Username:</strong> {{ user.Username }}</p>
-        <p><strong>First Name:</strong> {{ user.FirstName }}</p>
-        <p><strong>Last Name:</strong> {{ user.LastName }}</p>
-        <p><strong>Role:</strong> {{ user.RoleId }}</p>
-      </div>
-    </li>
-  </ul>
-</div>--->
-
 <div class="mat-elevation-z8">
   <mat-form-field appearance="fill">
     <mat-label>Search</mat-label>
@@ -21,7 +7,12 @@
 
   <table mat-table [dataSource]="dataSource" matSort>
 
-   
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User Id </th>
+      <td mat-cell *matCellDef="let user"> {{user.UserId}} </td>
+    </ng-container>
+
+
     <ng-container matColumnDef="lastName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
       <td mat-cell *matCellDef="let user"> {{user.LastName}} </td>
