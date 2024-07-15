@@ -44,7 +44,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Papadopoulos','Kostas',20,'2024-07-04','papad1','123',1),(2,'Tsipras','Alexis',49,'1974-07-28','kolotoumbas','123',2),(3,'Papadopoulos','Kostas',20,'2003-12-31','papad2','123',2),(5,'Papadopoulos',NULL,NULL,NULL,'papad3','123',2),(8,'Μητσοτάκης','Κυριάκος',56,'1968-03-04','gourlomatis','123',2),(9,'s',NULL,NULL,NULL,'s','s',2),(10,'a',NULL,NULL,NULL,'a','a',2),(15,'Papadopoulosss',NULL,NULL,NULL,'papad123','123',1),(16,'asda',NULL,NULL,NULL,'asda','a',2);
+INSERT INTO `users` VALUES (1,'Papadopouloss','Kostas',20,'2024-07-10','papad1','123',1),(2,'Tsipras','Alexis',49,'1974-07-28','kolotoumbas','123',2),(3,'Papadopoulos','Kostas',20,'2003-12-31','papad2','123',2),(5,'Papadopoulos',NULL,NULL,NULL,'papad3','123',2),(8,'Μητσοτάκης','Κυριάκος',56,'1968-03-04','gourlomatis','123',2),(9,'s',NULL,NULL,NULL,'s','s',2),(10,'a',NULL,NULL,NULL,'a','a',2),(15,'Papadopoulosss',NULL,NULL,NULL,'papad123','123',1),(16,'asda',NULL,NULL,NULL,'asda','a',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-12 10:13:46
+-- Dump completed on 2024-07-15 15:21:58

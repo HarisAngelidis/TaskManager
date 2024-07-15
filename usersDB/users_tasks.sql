@@ -27,10 +27,13 @@ CREATE TABLE `tasks` (
   `title` text NOT NULL,
   `description` text NOT NULL,
   `userId` int NOT NULL,
+  `statusId` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
-  CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`UserId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `tasksStatus_idx` (`statusId`),
+  CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`UserId`),
+  CONSTRAINT `tasksStatus` FOREIGN KEY (`statusId`) REFERENCES `tasksStatus` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +42,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (5,'1223','123123',1),(8,'12','122',2);
+INSERT INTO `tasks` VALUES (16,'123wsa','sdas',1,2),(17,'test12d','test1',2,1),(18,'test221','test2',1,2);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-12 10:13:46
+-- Dump completed on 2024-07-15 15:21:58
