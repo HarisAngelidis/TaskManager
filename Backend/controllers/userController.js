@@ -6,15 +6,10 @@ const jwt = require('jsonwebtoken');
 
 async function getAllUsers(req, res) {
 
-   role = req.params.role ;
-
-   flag = true;
-
-   if(!role) {flag = false;}
 
     try {
     
-        const result = await userService.getAllUsers(flag,role);
+        const result = await userService.getAllUsers();
         res.status(200).json({ result});}
     
      catch (err) {
@@ -63,7 +58,8 @@ async function addUser(req, res) {
 }
 
 async function updateUser(req, res) {
-    const id = parseInt(req.params.id);
+    let userId = null;
+    const user = req.user;
     const { LastName, FirstName, Age, DateOfBirth,Username,Password } = req.body;
 
     console.log(LastName);
@@ -78,8 +74,12 @@ async function updateUser(req, res) {
         if (!result.length) {
             res.status(400).json({ msg: `A user with that id does not exist` });
         } else {
-            await userService.updateUser(id, LastName, FirstName, Age, DateOfBirth,Username,Password);
-            res.status(200).json({ msg: 'User updated' });
+
+            if (user.UserId === +req.params.id) {
+                userId = user.UserId;
+              
+            await userService.updateUser(userId, LastName, FirstName, Age, DateOfBirth,Username,Password);
+            res.status(200).json({ msg: 'User updated' });}
         }
     } catch (err) {
         res.status(500).json({ msg: 'Something went wrong' });

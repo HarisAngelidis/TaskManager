@@ -1,8 +1,13 @@
 const taskService = require('../services/taskService');
 
 async function getAllTasks(req, res) {
-  const userId = parseInt(req.params.id);
+  console.log("doulevo");
+  let userId = null;
+  const user = req.user;
   try {
+    if (user.RoleId !== 1 && user.UserId === +req.params.id) {
+      userId = user.UserId;
+    }
     const result = await taskService.getAllTasks(userId);
     res.status(200).json(result);
   } catch (err) {
@@ -11,9 +16,13 @@ async function getAllTasks(req, res) {
 }
 
 async function addTask(req, res) {
-  const {  title, description } = req.body;
-  const userId = parseInt(req.params.id);
+  const {title, description} = req.body;
+  const user = req.user;
+  let userId = null;
   try {
+    if (user.UserId === +req.params.id) {
+      userId = user.UserId;
+    }
     const result = await taskService.addTask(userId, title, description);
     res.status(200).json({ id: result });
   } catch (err) {
@@ -24,9 +33,37 @@ async function addTask(req, res) {
 async function updateTask(req, res) {
   const { userId, title, description } = req.body;
   const { id } = req.params;
+  const user = req.user;
+  let UserId = null;
   try {
-    await taskService.updateTask(id, userId, title, description);
-    res.status(200).json({ msg: 'Task updated' });
+    if (user.UserId === userId) {
+       UserId = user.UserId;
+       await taskService.updateTask(id, UserId, title, description);
+       res.status(200).json({ msg: 'Task updated' });
+    }
+
+    else{res.status(405).json({ msg: `You are not the owner of that task` });}
+  
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
+}
+
+async function updateStatus(req, res) {
+  const { userId,statusId} = req.body;
+  const { id } = req.params;
+  const user = req.user;
+  console.log("nai");
+  
+  try {
+    if (user.UserId === userId) {
+       
+       await taskService.updateStatus(id,statusId);
+       res.status(200).json({ msg: 'Status updated' });
+    }
+
+    else{res.status(405).json({ msg: `You are not the owner of that task` });}
+  
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
   }
@@ -35,17 +72,41 @@ async function updateTask(req, res) {
 async function deleteTask(req, res) {
 
   const { id } = req.params;
+  let userId = null;
+
+
   try {
+   
+    userId =  await taskService.getUserIdByTaskId(id);
+    
+    }
+
+   catch (err) {
+    res.status(501).json({ msg: `Something went wrong` });
+  }
+
+
+  const user = req.user;
+
+  try {
+    if (user.UserId === userId[0].UserId) {
     await taskService.deleteTask(id);
-    res.status(200).json({ msg: 'Task deleted' });
+    res.status(200).json({ msg: 'Task deleted' });}
+
+    else{res.status(405).json({ msg: `You are not the owner of that task` });}
+  
+
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
   }
 }
 
+
+
 module.exports = {
   getAllTasks,
   addTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  updateStatus
 };

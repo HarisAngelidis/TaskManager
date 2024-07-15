@@ -11,6 +11,7 @@ router.get(path,verifyToken,isAdmin, userController.getAllUsers);
 
 router.get(path + ':id', userController.getUserById);
 router.post(path, userController.addUser);
+
 router.put(path + ':id',verifyToken, userController.updateUser);
 router.delete(path + ':id', userController.deleteUser);
 

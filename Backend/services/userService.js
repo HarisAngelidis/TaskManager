@@ -1,12 +1,12 @@
 const  {queryDatabase }= require('../database/database-calls');
 
 
-function getAllUsers(flag,role) {
+function getAllUsers() {
 
-    if(!flag){
-    return queryDatabase("SELECT * FROM Users", []);}
+    
+    return queryDatabase("SELECT * FROM Users", []);
 
-    else{return queryDatabase("SELECT * FROM Users u INNER JOIN UserRole UR on U.RoleID = UR.RoleID WHERE Role= ?", [role]);}
+    
 }
 
 function getUserById(id) {
