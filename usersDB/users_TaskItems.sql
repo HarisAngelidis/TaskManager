@@ -16,28 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tasksStatus`
+-- Table structure for table `TaskItems`
 --
 
-DROP TABLE IF EXISTS `tasksStatus`;
+DROP TABLE IF EXISTS `TaskItems`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tasksStatus` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `status` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `TaskItems` (
+  `itemId` int NOT NULL AUTO_INCREMENT,
+  `taskId` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`itemId`),
+  KEY `taskitems_ibfk_1` (`taskId`),
+  CONSTRAINT `taskitems_ibfk_1` FOREIGN KEY (`taskId`) REFERENCES `tasks` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tasksStatus`
+-- Dumping data for table `TaskItems`
 --
 
-LOCK TABLES `tasksStatus` WRITE;
-/*!40000 ALTER TABLE `tasksStatus` DISABLE KEYS */;
-INSERT INTO `tasksStatus` VALUES (2,'completed'),(1,'pending');
-/*!40000 ALTER TABLE `tasksStatus` ENABLE KEYS */;
+LOCK TABLES `TaskItems` WRITE;
+/*!40000 ALTER TABLE `TaskItems` DISABLE KEYS */;
+INSERT INTO `TaskItems` VALUES (3,17,'taskitme3'),(6,16,'Σφουγγάρισμα'),(7,16,'Σκούπα'),(8,16,'Ξεσκόνισμα'),(9,16,'Τζάμια'),(11,17,'asd');
+/*!40000 ALTER TABLE `TaskItems` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
