@@ -1,6 +1,7 @@
 const userService = require('../services/userService');
 const userRoleService = require('../services/userRoleService');
 const jwt = require('jsonwebtoken');
+const {sendEmail} = require('../services/emailService');
 
 
 
@@ -33,9 +34,10 @@ async function getUserById(req, res) {
 
 async function addUser(req, res) {
     try {
-        const { LastName, FirstName, Age, DateOfBirth, RoleId,Username,Password} = req.body;
+        console.log(req.body);
+        const { LastName, FirstName, Age, DateOfBirth, RoleId,Username,Password,email} = req.body;
         
-        if (!LastName || !RoleId || !Username || !Password) {
+        if (!LastName || !RoleId || !Username || !Password || !email) {
             res.status(400).json({ msg: `The new user must have a last name,a role id, a username and a password` });
             return;
         }
@@ -49,20 +51,37 @@ async function addUser(req, res) {
             res.status(400).json({ msg: `The role id does not exist` });
             return;
         }
-        
-        await userService.addUser(LastName, FirstName, Age, DateOfBirth,RoleId,Username,Password);
+    
+
+        await userService.addUser(LastName, FirstName, Age, DateOfBirth,RoleId,Username,Password,email);
+       
+        const emailBody = `
+        Νέος χρήστης δημιουργήθηκε!
+        Επώνυμο: ${LastName}
+        Όνομα Χρήστη: ${Username}
+        Email: ${email}
+    `;
+
+    try {
+        await sendEmail('xangelidis100@gmail.com', 'Δημιουργία χρήστη', emailBody);
+        console.log('Email sent successfully');
+    } catch (emailError) {
+        console.error('Failed to send email:', emailError);
+    }
         res.status(200).json({ msg: 'User added' });
+
+      
     } catch (err) {
         res.status(500).json({ msg: 'Something went wrong' });
     }
 }
 
 async function updateUser(req, res) {
-    let userId = null;
+    
     const user = req.user;
-    const { LastName, FirstName, Age, DateOfBirth,Username,Password } = req.body;
+    let userId = user.UserId;
+    const { LastName, FirstName, Age, DateOfBirth,Username,Password,email } = req.body;
 
-    console.log(LastName);
 
     if (!LastName ) {
         res.status(400).json({ msg: `The updated user must have a last name` });
@@ -70,15 +89,22 @@ async function updateUser(req, res) {
     }
     
     try {
-        const result = await userService.getUserById(id);
+        
+        const result = await userService.getUserById(user.UserId);
+       
         if (!result.length) {
+          
             res.status(400).json({ msg: `A user with that id does not exist` });
-        } else {
+            
+        } 
+        
+        else {
 
             if (user.UserId === +req.params.id) {
                 userId = user.UserId;
+                console.log(userId);
               
-            await userService.updateUser(userId, LastName, FirstName, Age, DateOfBirth,Username,Password);
+            await userService.updateUser(userId, LastName, FirstName, Age, DateOfBirth,Username,Password,email);
             res.status(200).json({ msg: 'User updated' });}
         }
     } catch (err) {
@@ -138,9 +164,61 @@ async function getUsersByDate(req, res) {
         } catch (err) {
           console.error('Login error:', err);
           res.status(500).json({ success: false, message: 'Something went wrong' });
+        }}
+
+
+
+        async function getEmailByUsername(req, res) {
+            const Username = (req.params.username);
+            try {
+                const result = await userService.getEmailByUsername(Username);
+               
+
+                if (!result.length) {
+                    res.status(400).json({ msg: `A user with that username does not exist` });
+                } else {
+                    
+                    const emailBody = `
+                    Ο κωδικός σας είναι : 
+                    ${result[0].Password}
+                    
+                `;
+            
+                try {
+                    await sendEmail(result[0].email, 'Κωδικός χρήστη',emailBody );
+                    console.log('Email sent successfully');
+                } catch (emailError) {
+                    console.error('Failed to send email:', emailError);
+                }
+
+                    res.status(200).json({ msg: 'Email sent' });
+                }
+            } catch (err) {
+                res.status(500).json({ msg: `Something went wrong` });
+            }
         }
-      }
+
+        async function countUsers(req,res){
+
+            
+
+            try {
+    
+                const result = await userService.countUsers();
+                const count = result[0]["count(UserId)"];
+                console.log(count);
+              
+                res.status(200).json({ count});}
+            
+             catch (err) {
+                res.status(500).json({ msg: `Something went wrong`});
+            }
+
+
+        }
       
+      
+        
     
 
 module.exports = {
@@ -150,6 +228,8 @@ module.exports = {
     updateUser,
     deleteUser,
     getUsersByDate,
-    UserLogin
+    UserLogin,
+    getEmailByUsername,
+    countUsers
 
 };

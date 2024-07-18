@@ -7,6 +7,8 @@ const { verifyToken, isAdmin } = require('../authMiddleware');
 
 router.post(path + 'login', userController.UserLogin);
 router.get(path + 'ByDate', userController.getUsersByDate);
+router.get(path + 'count', userController.countUsers);
+router.get(path + 'resetPassword/:username', userController.getEmailByUsername);
 router.get(path,verifyToken,isAdmin, userController.getAllUsers);
 
 router.get(path + ':id', userController.getUserById);
