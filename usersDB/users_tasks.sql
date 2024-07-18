@@ -43,7 +43,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (16,'Καθαρισμός Σπιτιού','Πάτα στον τίτλο για λεπτομέριες',1,1,NULL),(17,'test12d','test1',2,1,NULL),(23,'asd','asd',1,1,NULL);
+INSERT INTO `tasks` VALUES (16,'Καθαρισμός Σπιτιού','Πάτα στον τίτλο για λεπτομέρειες',1,2,NULL),(17,'test12d','test1',2,1,NULL),(23,'asd','asd',1,1,NULL);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-18  9:37:06
+-- Dump completed on 2024-07-18 14:20:23
