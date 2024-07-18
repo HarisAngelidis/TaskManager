@@ -23,6 +23,7 @@ public signupForm = new FormGroup({
   LastName: new FormControl('', [Validators.required]),
   Username: new FormControl('', [Validators.required]),
   Password: new FormControl('', [Validators.required]),
+  email: new FormControl('', [Validators.email]),
   RoleId: new FormControl(2)
   
 })

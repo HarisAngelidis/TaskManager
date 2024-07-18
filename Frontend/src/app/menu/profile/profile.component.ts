@@ -31,7 +31,8 @@ export class ProfileComponent {
       Age: new FormControl(this.user.Age, [Validators.required, Validators.min(1)]),
       DateOfBirth: new FormControl(moment(this.user.DateOfBirth).format('YYYY-MM-DD'), [Validators.required]),
       Username: new FormControl(this.user.Username, [Validators.required]),
-      Password : new FormControl(this.user.Password, [Validators.required])
+      Password : new FormControl(this.user.Password, [Validators.required]),
+      email : new FormControl(this.user.email, [Validators.email]),
       
     });
   }

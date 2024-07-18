@@ -1,7 +1,9 @@
+import { Component, OnInit } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { LayoutComponent } from '../../layout/layout.component';
 import { RouterLink } from '@angular/router';
+import { StatisticsService } from '../../services/statistics.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,30 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   storedUser = localStorage.getItem('authUser');
   user: any = JSON.parse(this.storedUser || '{}');
   token : any = localStorage.getItem('authToken');
 
+  usersCount: number | null = null;
 
+  constructor(private statisticsService: StatisticsService) {}
+
+  ngOnInit(): void {
+    this.loadStatistics();
+  }
+
+  loadStatistics(): void {
+    this.statisticsService.getUsersCount().subscribe({
+      next: (count) => {
+        console.log("count is " + count);
+        this.usersCount = count;
+      },
+      error: (error) => {
+        console.error('Error loading statistics', error);
+      }
+    });
+  }
 
   get userName(): string {
     console.log(this.token);

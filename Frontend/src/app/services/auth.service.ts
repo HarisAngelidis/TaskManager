@@ -41,6 +41,12 @@ signup(data: any) {
   return this.httpClient.post(`${this.baseUrl}`, data );
 }
 
+forgotPassword(username : any){
+
+  return this.httpClient.get(`${this.baseUrl}/resetPassword/${username}`);
+
+}
+
 logout() {
 
   this.router.navigate(['/']);

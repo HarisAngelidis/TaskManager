@@ -4,6 +4,9 @@
   <h1>Καλώς ήρθες στην Εφαρμογή Διαχείρισης Tasks</h1>
   <h2>Γειά σας, {{ userName }}!</h2>
   <p>Εδώ μπορείτε να διαχειριστείτε τα tasks σας εύκολα και γρήγορα.</p>
+  <div class="statistics">
+    <p>Πλήθος Χρηστών: {{ usersCount }}</p>
+  </div>
   <div class="buttons">
     <a routerLink="/menu/tasks" class="btn">Διαχείριση Tasks</a>
     <a routerLink="/menu/users" *ngIf="user.RoleId === 1" class="btn">Διαχείριση Χρηστών</a>

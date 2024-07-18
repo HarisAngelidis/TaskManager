@@ -42,11 +42,11 @@ export class UserService {
   
   updateUser(id: number, userData: any): Observable<any> {
     const authToken = localStorage.getItem('authToken'); 
-
-  
-   
-
     return this.http.put(`${this.apiUrl}/${id}`, userData);
+  }
+
+  getUsersCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/users/count`);
   }
 
   

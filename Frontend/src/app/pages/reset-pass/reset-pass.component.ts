@@ -10,36 +10,38 @@ import { inject } from '@angular/core';
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule,CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './reset-pass.component.html',
+  styleUrl: './reset-pass.component.scss',
   host: {ngSkipHydration: 'true'},
 })
-export class LoginComponent {
+export class ResetPassComponent {
 
   authService = inject(AuthService);
   router = inject(Router);
-  loginError: string | null = null;
+  resetError: string | null = null;
+  
 
-  protected loginForm = new FormGroup({
+  protected resetForm = new FormGroup({
     Username: new FormControl('', [Validators.required]),
-    Password: new FormControl('', [Validators.required]),
   })
 
+
+
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
+    if (this.resetForm.valid) {
+      this.authService.forgotPassword(this.resetForm.value.Username).subscribe({
         next: (data: any) => {
-          this.router.navigate(['/menu']);
+          this.router.navigate(['/login']);
         },
         error: (err) => {
         
-          this.loginError = 'Invalid username or password';
+          this.resetError = 'Invalid username';
         }
       });
     } else {
       
-      this.loginError = 'Please enter both username and password'; 
+      this.resetError = 'Please enter a username '; 
     }
-    console.log(this.loginError);
+    console.log(this.resetError);
   }
 }
