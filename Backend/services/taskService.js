@@ -5,9 +5,22 @@ function getAllTasks(userId) {
   queryDatabase("SELECT * FROM tasks") ;
 }
 
+function getAllTaskItemsByTaskId(taskId) {
+  const query = `Select * from taskItems where taskId=?`;
+  const values = [taskId];
+  return queryDatabase(query,values) ;
+}
+
+
 function addTask(userId, title, description) {
   const query = `INSERT INTO tasks (userId, title, description,statusId) VALUES (?, ?, ?,?)`;
   const values = [userId, title, description,1];
+  return queryDatabase(query, values).then(result => result.insertId);
+}
+
+function addTaskItem(taskId,title) {
+  const query = `INSERT INTO taskItems (taskId, title) VALUES (?, ?)`;
+  const values = [taskId, title];
   return queryDatabase(query, values).then(result => result.insertId);
 }
 
@@ -23,8 +36,20 @@ function updateStatus(id, statusId) {
   return queryDatabase(query, values);
 }
 
+function updateTaskItem(itemId,title) {
+  const query = `UPDATE taskItems SET title = ?  WHERE itemId = ?`;
+  const values = [title,itemId];
+  return queryDatabase(query, values);
+}
+
 function deleteTask(id) {
   const query = `DELETE FROM tasks WHERE id = ?`;
+  const values = [id];
+  return queryDatabase(query, values);
+}
+
+function deleteTaskItem(id) {
+  const query = `DELETE FROM taskItems WHERE itemId = ?`;
   const values = [id];
   return queryDatabase(query, values);
 }
@@ -50,5 +75,9 @@ module.exports = {
   deleteTask,
   getUserIdByTaskId,
   getStatusById,
-  updateStatus
+  updateStatus,
+  getAllTaskItemsByTaskId,
+  addTaskItem,
+  updateTaskItem,
+  deleteTaskItem
 };

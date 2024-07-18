@@ -15,6 +15,18 @@ async function getAllTasks(req, res) {
   }
 }
 
+async function getAllTaskItemsByTaskId(req, res) {
+  
+  const { id } = req.params;
+  try {
+    
+    const result = await taskService.getAllTaskItemsByTaskId(id);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
+}
+
 async function addTask(req, res) {
   const {title, description} = req.body;
   const user = req.user;
@@ -24,6 +36,18 @@ async function addTask(req, res) {
       userId = user.UserId;
     }
     const result = await taskService.addTask(userId, title, description);
+    res.status(200).json({ id: result });
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
+}
+async function addTaskItem(req, res) {
+  const {title} = req.body;
+  const { id } = req.params;
+  
+  try {
+   
+    const result = await taskService.addTaskItem(id, title);
     res.status(200).json({ id: result });
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
@@ -43,6 +67,21 @@ async function updateTask(req, res) {
     }
 
     else{res.status(405).json({ msg: `You are not the owner of that task` });}
+  
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
+}
+
+async function updateTaskItem(req, res) {
+  const {title} = req.body;
+  const { id } = req.params;
+ 
+  try {
+  
+       await taskService.updateTaskItem(id,title);
+       res.status(200).json({ msg: 'TaskItem updated' });
+  
   
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
@@ -98,8 +137,23 @@ async function deleteTask(req, res) {
 
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
+  }}
+
+
+
+  async function deleteTaskItem(req, res) {
+
+    const { id } = req.params;
+  
+    try {
+     
+      await taskService.deleteTaskItem(id);
+      res.status(200).json({ msg: 'TaskItem deleted' });
+  
+    } catch (err) {
+      res.status(500).json({ msg: `Something went wrong` });
+    }
   }
-}
 
 
 
@@ -108,5 +162,9 @@ module.exports = {
   addTask,
   updateTask,
   deleteTask,
-  updateStatus
+  updateStatus,
+  getAllTaskItemsByTaskId,
+  addTaskItem,
+  updateTaskItem,
+  deleteTaskItem
 };
