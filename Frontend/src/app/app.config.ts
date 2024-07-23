@@ -1,7 +1,8 @@
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { HttpClientModule, withInterceptors } from '@angular/common/http';
 import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
-import { ApplicationConfig } from '@angular/core';
 import { AuthInterceptor } from './auth.interceptor';
 import { MatTableModule } from '@angular/material/table';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -14,7 +15,7 @@ import { withFetch } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideClientHydration(),provideHttpClient(withFetch()), provideAnimationsAsync()
     ,HttpClientModule, provideAnimationsAsync(),MatSortModule,MatSort,MatSortHeader,MatTableModule,
-    provideHttpClient(withInterceptors([AuthInterceptor]))
+    provideHttpClient(withInterceptors([AuthInterceptor])),
     
   ]
 };

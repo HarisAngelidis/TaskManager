@@ -1,24 +1,26 @@
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, RouterOutlet } from '@angular/router';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { DisplayComponent } from './display/display.component';
 import { Router } from '@angular/router';
+import { WebsocketService } from './services/websocket.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,DisplayComponent,CommonModule],
+  imports: [RouterOutlet,DisplayComponent,CommonModule,], 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   showMenu: boolean = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,/*private webSocketService: WebsocketService*/) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showMenu = !(event.urlAfterRedirects.includes('/login') || event.urlAfterRedirects.includes('/signup'));
@@ -26,6 +28,12 @@ export class AppComponent {
     });
   }
 
+  ngOnInit(): void {
+    
+  }
 
   title = 'Task Manager';
 }
+
+
+

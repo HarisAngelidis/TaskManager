@@ -49,7 +49,7 @@ import { TaskService } from '../../services/task.service';
   styleUrls: ['./myttasks.component.scss']
 })
 export class MyTasksComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'description','status', 'actions',];
+  displayedColumns: string[] = ['title', 'description','status','filePath', 'actions',];
   displayedColumnsItems: string[] = ['title','actions',];
   dataSource = new MatTableDataSource<any>([]);
   dataSourceItems = new MatTableDataSource<any>([]);
@@ -200,8 +200,41 @@ export class MyTasksComponent implements OnInit {
       this.loadTaskItems();
     });
   }
-}
 
+  uploadFile(event: any, taskId: number): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.taskService.uploadTaskFile(taskId, file).subscribe(() => {
+        this.loadTasks();
+      });
+    }
+  }
+
+  downloadFile(taskId: number): void {
+    this.taskService.getTaskFile(taskId).subscribe((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `task_${taskId}_file`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    });
+  }
+
+  deleteFile(taskId: number): void {
+    this.taskService.deleteTaskFile(taskId).subscribe({
+      next: (response) => {
+        console.log('File deleted successfully', response);
+        this.loadTasks(); 
+      },
+      error: (error) => {
+        console.error('Error deleting file', error);
+      }
+    });
+  }
+}
 
 
 

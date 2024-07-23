@@ -47,6 +47,22 @@ export class TaskService {
   deleteTaskItem( itemId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl2}/${itemId}`);
   }
+
+  uploadTaskFile(taskId: number, file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.baseUrl}/${taskId}/upload`, formData);
+  }
+
+  getTaskFile(taskId: number) {
+    return this.http.get(`${this.baseUrl}/${taskId}/file`, { responseType: 'blob' });
+  }
+
+  deleteTaskFile(taskId: number) : Observable<any>{
+    return this.http.delete(`${this.baseUrl}/${taskId}/file`);
+  }
+
+ 
   
 }
 
