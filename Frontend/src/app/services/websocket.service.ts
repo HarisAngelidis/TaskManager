@@ -7,7 +7,7 @@ export class WebsocketService {
  private webSocket: Socket;
  constructor() {
   this.webSocket = new Socket({
-   url: "http://localhost:4200",
+   url: "http://localhost:8000",
    options: {},
   });
  }
