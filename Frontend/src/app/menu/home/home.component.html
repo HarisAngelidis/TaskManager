@@ -1,6 +1,6 @@
 <div class="home-container">
   <h1>Καλώς ήρθες στην Εφαρμογή Διαχείρισης Tasks</h1>
-  <h2>Γειά σας, {{ userName }}!</h2>
+  <h2>Γεια σας, {{ userName }}!</h2>
   <p>Εδώ μπορείτε να διαχειριστείτε τα tasks σας εύκολα και γρήγορα.</p>
   <div class="statistics">
     <p>Πλήθος Χρηστών: {{ usersCount }}</p>
@@ -10,4 +10,26 @@
     <a routerLink="/menu/users" *ngIf="user.RoleId === 1" class="btn">Διαχείριση Χρηστών</a>
   </div>
 </div>
-
+<div class="statistics-container">
+  <div class="statisticsVert">
+    <ngx-charts-bar-vertical
+      [results]="chartData"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="statisticsPie">
+    <ngx-charts-pie-chart
+      [results]="chartData"
+      [legend]="showLegend"
+      [doughnut]="isDoughnut"
+      [labels]="showLabels">
+    </ngx-charts-pie-chart>
+  </div>
+</div>

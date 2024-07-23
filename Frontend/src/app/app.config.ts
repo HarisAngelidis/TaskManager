@@ -1,7 +1,6 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { HttpClientModule, withInterceptors } from '@angular/common/http';
 import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 import { AuthInterceptor } from './auth.interceptor';
 import { MatTableModule } from '@angular/material/table';

@@ -7,67 +7,82 @@
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif; /* Αλλαγή γραμματοσειράς για πιο σύγχρονη εμφάνιση */
+  font-family: 'Arial', sans-serif; 
 }
+
+.statisticsVert, .statisticsPie {
+  width: 45%; 
+  height: 90%; /* Αύξηση του ύψους των διαγραμμάτων */
+}
+
+.statistics-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  margin-top: 30px; 
+  height: 400px; /* Αύξηση του ύψους του container */
+}
+
 
 .home-container {
   text-align: center;
-  padding: 40px; /* Ελαφρώς μειωμένο padding */
-  background: linear-gradient(to bottom right, #ffffff, #e2eafc); /* Απαλό gradient background */
-  border-radius: 12px; /* Στρογγυλεμένες γωνίες για πιο μοντέρνα εμφάνιση */
-  max-width: 700px; /* Μικρότερο μέγιστο πλάτος */
+  padding: 40px; 
+  background: linear-gradient(to bottom right, #ffffff, #e2eafc); 
+  border-radius: 12px; 
+  max-width: 700px; 
   margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ελαφρύ shadow για βάθος */
-  color: #333; /* Σκούρο χρώμα κειμένου για καλύτερη αναγνωσιμότητα */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  color: #333;
 }
 
 h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #007bff; /* Προσθήκη χρώματος στα h1 */
+  color: #007bff; 
 }
 
 h2 {
-  font-size: 1.5rem; /* Ελαφρώς μικρότερο μέγεθος */
+  font-size: 1.5rem; 
   margin-bottom: 15px;
-  color: #333; /* Σκούρο χρώμα για καλύτερη αναγνωσιμότητα */
+  color: #333; 
 }
 
 p {
-  font-size: 1.1rem; /* Ελαφρώς μικρότερο μέγεθος */
+  font-size: 1.1rem; 
   margin-bottom: 25px;
 }
 
 .statistics {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #007bff; /* Χρώμα κειμένου για το section στατιστικών */
+  color: #007bff; 
 }
 
 .buttons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Μειωμένο gap μεταξύ των κουμπιών */
+  gap: 15px; 
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 24px; /* Αυξημένα padding για μεγαλύτερη περιοχή κλικ */
+  padding: 12px 24px; 
   font-size: 1.1rem;
   color: #fff;
   background-color: #007bff;
   text-decoration: none;
-  border-radius: 8px; /* Μεγαλύτερη στρογγυλοποίηση γωνιών */
+  border-radius: 8px; 
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ελαφρύ shadow για 3D εφέ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .btn:hover {
-  background-color: #0056b3; /* Σκούρο μπλε για hover */
-  transform: translateY(-3px); /* Ελαφρά ανύψωση κατά hover */
+  background-color: #0056b3; 
+  transform: translateY(-3px); 
 }
 
 .btn:active {
-  background-color: #004085; /* Πολύ σκούρο μπλε για ενεργό κατάσταση */
-  transform: translateY(0); /* Επαναφορά στη θέση */
+  background-color: #004085; 
+  transform: translateY(0); 
 }

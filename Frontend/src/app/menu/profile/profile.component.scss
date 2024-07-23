@@ -6,74 +6,74 @@
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif; /* Εναλλακτική γραμματοσειρά */
+  font-family: 'Arial', sans-serif; 
 }
 
 .profile-card {
-  max-width: 550px; /* Μεγαλύτερο πλάτος για καλύτερη εμφάνιση */
+  max-width: 550px; 
   margin: auto;
-  padding: 30px; /* Αυξημένο padding για καλύτερη εμφάνιση */
-  border-radius: 12px; /* Μεγαλύτερη στρογγυλοποίηση γωνιών */
-  background-color: #ffffff; /* Λευκό φόντο για την κάρτα */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Ελαφρύ shadow για βάθος */
-  border: 1px solid #e1e1e1; /* Απαλό περίγραμμα */
+  padding: 30px; 
+  border-radius: 12px; 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  border: 1px solid #e1e1e1; 
 }
 
 .profile-card h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333; /* Σκούρο χρώμα για τον τίτλο */
-  font-size: 2rem; /* Μεγαλύτερο μέγεθος γραμματοσειράς */
+  color: #333; 
+  font-size: 2rem; 
 }
 
 .profile-card form div {
-  margin-bottom: 15px; /* Αυξημένο margin μεταξύ πεδίων */
+  margin-bottom: 15px; 
 }
 
 .profile-card label {
   display: block;
-  margin-bottom: 8px; /* Μεγαλύτερο margin κάτω από το label */
-  color: #666; /* Ελαφρύ γκρι για καλύτερη αναγνωσιμότητα */
-  font-weight: 500; /* Ελαφρώς πιο έντονο font-weight */
+  margin-bottom: 8px; 
+  color: #666; 
+  font-weight: 500; 
 }
 
 .profile-card input {
-  width: 98%; /* Ολόκληρο πλάτος του container */
-  padding: 12px 15px; /* Αυξημένα padding για άνεση */
-  border: 1px solid #dcdcdc; /* Ελαφρύ περίγραμμα */
-  border-radius: 8px; /* Μεγαλύτερη στρογγυλοποίηση */
-  font-size: 16px; /* Μεγαλύτερη γραμματοσειρά για ευχρηστία */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Εσωτερική σκιά για βάθος */
+  width: 98%; 
+  padding: 12px 15px; 
+  border: 1px solid #dcdcdc; 
+  border-radius: 8px; 
+  font-size: 16px; 
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .profile-card input:focus {
-  border-color: #007bff; /* Χρώμα περιγράμματος κατά την εστίαση */
-  outline: none; /* Αφαίρεση του default outline */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Ελαφρύ shadow κατά την εστίαση */
+  border-color: #007bff; 
+  outline: none; 
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); 
 }
 
 .profile-card button {
   display: block;
-  width: 100%; /* Εξασφαλίζει ότι το κουμπί καταλαμβάνει όλο το διαθέσιμο πλάτος */
-  max-width: 400px; /* Ορίζει μέγιστο πλάτος για να μην υπερβαίνει το πλάτος της κάρτας */
+  width: 100%; 
+  max-width: 400px; 
   padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px; /* Μεγαλύτερη στρογγυλοποίηση */
+  border-radius: 8px; 
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 0 auto; /* Κεντρική ευθυγράμμιση */
+  margin: 0 auto; 
 }
 
 
 .profile-card button:hover {
   background-color: #0056b3;
-  transform: translateY(-2px); /* Ελαφριά ανύψωση κατά hover */
+  transform: translateY(-2px); 
 }
 
 .profile-card button:active {
   background-color: #004085;
-  transform: translateY(0); /* Επαναφορά στη θέση κατά την κλικ */
+  transform: translateY(0); 
 }

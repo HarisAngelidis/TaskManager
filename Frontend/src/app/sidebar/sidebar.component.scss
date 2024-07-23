@@ -1,4 +1,4 @@
-/* 1. Αφαίρεση περιγραμμάτων γύρω από τις επιλογές */
+
 .nav-button {
   position: relative;
   margin-left: 16px;
@@ -10,14 +10,14 @@
   cursor: pointer;
   z-index: 1;
   transition: color 0.2s;
-  border: none; /* Αφαίρεση περιγράμματος */
-  border-radius: 8px; /* Στρογγυλεμένες γωνίες */
-  padding: 0 10px; /* Εσωτερικά περιθώρια */
+  border: none; 
+  border-radius: 8px; 
+  padding: 0 10px; 
 }
 
-/* 2. Επέκταση των επιλογών κατά ύψος του sidebar */
+
 #nav-content {
-  margin: 0; /* Αφαίρεση αρνητικού περιθωρίου */
+  margin: 0; 
   padding: 16px 0;
   position: relative;
   flex: 1;
@@ -33,7 +33,7 @@
   position: absolute;
   left: 0vw;
   top: 0vw;
-  height: 100%; /* Διατήρηση ύψους 100% */
+  height: 100%; 
   background: #18283b;
   border-radius: 0px;
   display: flex;
@@ -70,7 +70,7 @@
   margin-bottom: 0;
 }
 
-/* 3. Καλαισθησία κουμπιού logout */
+
 #nav-footer-toggle:checked + #nav-footer {
   height: 30%;
   min-height: 54px;
@@ -120,7 +120,7 @@ label[for=nav-footer-toggle] {
   font-size: 0.6rem;
 }
 
-/* Αλλαγές στο κουμπί logout */
+
 #nav-footer-content {
   margin: 0 16px 16px 16px;
   border-top: solid 1px #8392a5;
@@ -134,31 +134,31 @@ label[for=nav-footer-toggle] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #d62929; /* Εντυπωσιακό χρώμα φόντου */
-  color: #fff; /* Λευκό κείμενο */
-  font-size: 1rem; /* Μέγεθος κειμένου */
-  padding: 10px 15px; /* Εσωτερικά περιθώρια */
-  border-radius: 12px; /* Στρογγυλεμένες γωνίες */
+  background: #d62929;
+  color: #fff; 
+  font-size: 1rem; 
+  padding: 10px 15px; 
+  border-radius: 12px; 
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
 }
 
 #nav-footer-content .logout-button:hover {
-  background: #c41c1c; /* Σκούρο κόκκινο για hover */
-  transform: scale(1.05); /* Ελαφρά μεγέθυνση */
+  background: #c41c1c; 
+  transform: scale(1.05); 
 }
 
 #nav-footer-content .logout-button:active {
-  background: #b01a1a; /* Σκούρο κόκκινο για κλικ */
+  background: #b01a1a;
 }
 
 #nav-toggle:checked ~ #nav-header {
-  width: calc(80px - 16px); /* Αλλαγή σε width */
+  width: calc(80px - 16px); 
 }
 
 #nav-toggle:checked ~ #nav-content,
 #nav-toggle:checked ~ #nav-footer {
-  width: 80px; /* Αλλαγή σε width */
+  width: 80px; 
 }
 
 #nav-toggle:checked ~ #nav-header #nav-title {
@@ -264,5 +264,5 @@ label[for=nav-footer-toggle] {
 
 .active-link .nav-button {
   font-weight: bold;
-  color: red; /* Μπορείτε να αλλάξετε το χρώμα σύμφωνα με τις απαιτήσεις σας */
+  color: red; 
 }
