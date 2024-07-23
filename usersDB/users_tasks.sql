@@ -28,13 +28,13 @@ CREATE TABLE `tasks` (
   `description` text NOT NULL,
   `userId` int NOT NULL,
   `statusId` int NOT NULL,
-  `expandable` tinyint(1) DEFAULT NULL,
+  `file_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   KEY `tasksStatus_idx` (`statusId`),
   CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`UserId`),
   CONSTRAINT `tasksStatus` FOREIGN KEY (`statusId`) REFERENCES `tasksStatus` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (16,'Καθαρισμός Σπιτιού','Πάτα στον τίτλο για λεπτομέρειες',1,2,NULL),(17,'test12d','test1',2,1,NULL),(23,'asd','asd',1,1,NULL);
+INSERT INTO `tasks` VALUES (16,'Καθαρισμός Σπιτιού','Πάτα στον τίτλο για λεπτομέρειες',1,2,'uploads/Parembolh_6.jpg'),(17,'test12d','test1',2,1,NULL),(23,'asd','asd',1,1,NULL);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-18 14:20:23
+-- Dump completed on 2024-07-23  9:45:56
