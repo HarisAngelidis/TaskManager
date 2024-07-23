@@ -68,6 +68,40 @@ function getStatusById(id){
 
 }
 
+/*function addTaskFile(taskId, filePath) {
+  const query = 'UPDATE tasks SET file_path = ? WHERE id = ?';
+  const values = [filePath, taskId];
+  return queryDatabase(query, values);
+}
+
+function getTaskFile(taskId) {
+  const query = 'SELECT file_path FROM tasks WHERE id = ?';
+  const values = [taskId];
+  return queryDatabase(query, values);
+}
+
+function deleteTaskFile(taskId) {
+  const query = 'UPDATE tasks SET file_path = NULL WHERE id = ?';
+  const values = [taskId];
+  return queryDatabase(query, values);
+}*/
+
+async function addTaskFile(taskId, filePath) {
+  const sql = 'UPDATE tasks SET file_path = ? WHERE id = ?';
+  await queryDatabase(sql, [filePath, taskId]);
+}
+
+async function getTaskFile(taskId) {
+  const sql = 'SELECT file_path FROM tasks WHERE id = ?';
+  const result = await queryDatabase(sql, [taskId]);
+  return result.length > 0 ? result[0].file_path : null;
+}
+
+async function deleteTaskFile(taskId) {
+  const sql = 'UPDATE tasks SET file_path = NULL WHERE id = ?';
+  await queryDatabase(sql, [taskId]);
+}
+
 module.exports = {
   getAllTasks,
   addTask,
@@ -79,5 +113,8 @@ module.exports = {
   getAllTaskItemsByTaskId,
   addTaskItem,
   updateTaskItem,
-  deleteTaskItem
+  deleteTaskItem,
+  addTaskFile,
+  getTaskFile,
+  deleteTaskFile,
 };

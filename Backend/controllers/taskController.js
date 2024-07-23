@@ -1,4 +1,5 @@
 const taskService = require('../services/taskService');
+const socket = require('../socket');
 
 async function getAllTasks(req, res) {
   console.log("doulevo");
@@ -9,6 +10,7 @@ async function getAllTasks(req, res) {
       userId = user.UserId;
     }
     const result = await taskService.getAllTasks(userId);
+    
     res.status(200).json(result);
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
@@ -36,6 +38,7 @@ async function addTask(req, res) {
       userId = user.UserId;
     }
     const result = await taskService.addTask(userId, title, description);
+    socket.getIo().emit('newTask', { title, description });
     res.status(200).json({ id: result });
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
