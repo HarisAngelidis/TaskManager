@@ -180,6 +180,53 @@ async function deleteTask(req, res) {
     }
   }
 
+  async function countTasks(req,res){
+    try {
+
+        const result = await taskService.countTasks();
+        const count = result[0]["count(id)"];
+       
+      
+        res.status(200).json({ count});}
+    
+     catch (err) {
+        res.status(500).json({ msg: `Something went wrong`});
+    }
+
+
+}
+
+async function countCompletedTasks(req,res){
+  try {
+
+      const result = await taskService.countCompletedTasks();
+      const count = result[0]["count(statusId)"];
+     
+    
+      res.status(200).json({ count});}
+  
+   catch (err) {
+      res.status(500).json({ msg: `Something went wrong`});
+  }
+
+
+}
+
+async function countPendingTasks(req,res){
+  try {
+
+      const result = await taskService.countPendingTasks();
+      const count = result[0]["count(statusId)"];
+     
+    
+      res.status(200).json({ count});}
+  
+   catch (err) {
+      res.status(500).json({ msg: `Something went wrong`});
+  }
+
+
+}
 
 
 module.exports = {
@@ -191,5 +238,8 @@ module.exports = {
   getAllTaskItemsByTaskId,
   addTaskItem,
   updateTaskItem,
-  deleteTaskItem
+  deleteTaskItem,
+  countTasks,
+  countCompletedTasks,
+  countPendingTasks
 };

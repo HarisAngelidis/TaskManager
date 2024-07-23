@@ -68,23 +68,29 @@ function getStatusById(id){
 
 }
 
-/*function addTaskFile(taskId, filePath) {
-  const query = 'UPDATE tasks SET file_path = ? WHERE id = ?';
-  const values = [filePath, taskId];
+function countTasks(){
+
+  const query = 'SELECT count(id) FROM tasks';
+  const values = [];
   return queryDatabase(query, values);
+
 }
 
-function getTaskFile(taskId) {
-  const query = 'SELECT file_path FROM tasks WHERE id = ?';
-  const values = [taskId];
+function countCompletedTasks(){
+
+  const query = 'SELECT count(statusId) FROM tasks where statusId = 2';
+  const values = [];
   return queryDatabase(query, values);
+
 }
 
-function deleteTaskFile(taskId) {
-  const query = 'UPDATE tasks SET file_path = NULL WHERE id = ?';
-  const values = [taskId];
+function countPendingTasks(){
+
+  const query = 'SELECT count(statusId) FROM tasks where statusId = 1';
+  const values = [];
   return queryDatabase(query, values);
-}*/
+
+}
 
 async function addTaskFile(taskId, filePath) {
   const sql = 'UPDATE tasks SET file_path = ? WHERE id = ?';
@@ -117,4 +123,7 @@ module.exports = {
   addTaskFile,
   getTaskFile,
   deleteTaskFile,
+  countTasks,
+  countCompletedTasks,
+  countPendingTasks
 };
