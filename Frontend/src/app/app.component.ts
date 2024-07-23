@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   showMenu: boolean = true;
 
-  constructor(private router: Router,/*private webSocketService: WebsocketService*/) {
+  constructor(private router: Router,/*private WebsocketService: WebsocketService*/) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showMenu = !(event.urlAfterRedirects.includes('/login') || event.urlAfterRedirects.includes('/signup'));
@@ -28,9 +28,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
+   ngOnInit(): void {
+    this.initializeSocketConnection();
   }
+
+  initializeSocketConnection() {
+    this.WebsocketService.connectSocket('message');
+   }
+
 
   title = 'Task Manager';
 }
