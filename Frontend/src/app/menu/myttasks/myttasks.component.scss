@@ -1,8 +1,19 @@
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh; 
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  text-align: center;
   padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif; /* Αλλαγή γραμματοσειράς για πιο σύγχρονη εμφάνιση */
+}
+.container {
+  
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0px;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
 }
 
 .row {

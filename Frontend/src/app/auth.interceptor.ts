@@ -3,7 +3,7 @@ import {
 } from '@angular/common/http';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log("pernaei aithma");
+  //console.log("pernaei aithma");
   const authToken = localStorage.getItem('authToken');
 
 

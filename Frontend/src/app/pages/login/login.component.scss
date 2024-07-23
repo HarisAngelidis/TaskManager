@@ -1,81 +1,113 @@
 
-html, body {
+
+  html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-  }
-  
-  .login-page {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+}
+
+.login-page {
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffefcc; 
-  }
-  
-  .login-container {
-    width: 500px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+    width: 400px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-  }
-  
-  h1 {
+    transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+    transform: scale(1.05);
+}
+
+h1 {
     color: #007bff;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+h2 {
+    margin-bottom: 30px;
     color: #343a40;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 20px;
     text-align: left;
-  }
-  
-  .form-control {
-    width: 95%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-  }
-  
-  .btn-login {
+}
+
+label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.form-control {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
     font-size: 18px;
     color: #fff;
     background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-  }
-  
-  .btn-login:hover {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-login:hover {
     background-color: #0056b3;
-  }
-  
-  .error-message {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.error-message {
     color: #ff4d4d;
     margin-bottom: 15px;
-  }
-  
-  .signup-prompt {
+}
+
+.signup-prompt {
     margin-top: 20px;
-  }
-  
-  .btn-signup {
+}
+
+.signup-prompt p {
+    margin: 10px 0;
+}
+
+.btn-signup {
     color: #007bff;
     text-decoration: none;
-  }
-  
-  .btn-signup:hover {
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.btn-signup:hover {
     text-decoration: underline;
-  }
+    color: #0056b3;
+}
+
   

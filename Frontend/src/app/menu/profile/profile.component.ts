@@ -20,7 +20,7 @@ export class ProfileComponent {
   constructor(private userService: UserService, private router: Router) {
   
     const storedUser = localStorage.getItem('authUser');
-    console.log(storedUser);
+    //console.log(storedUser);
     this.user = JSON.parse(storedUser || '{}');
 
 

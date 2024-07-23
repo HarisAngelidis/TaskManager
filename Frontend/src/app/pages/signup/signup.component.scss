@@ -2,22 +2,30 @@
     box-sizing: border-box;
 }
 
-:host {
-    height: 100vh;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(253, 101, 133, 1);
 }
 
 .signup-card {
-    border-radius: 10px;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-    width: 40%;
-    height: 450px;
-    background-color: #ffffff;
-    padding: 10px 30px;
+    width: 400px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.signup-card:hover {
+    transform: scale(1.05);
 }
 
 .card-title {
@@ -30,7 +38,7 @@
 }
 
 .form-group input {
-    margin: 5px 0;
+    margin: 10px 0;
     width: 100%;
     background-color: #e2e2e2;
     border: none;
@@ -46,7 +54,7 @@
     outline: none;
     border-radius: 5px;
     border: none;
-    padding: 8px 15px;
+    padding: 10px;
     width: 100%;
 }
 

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit{
   loadStatistics(): void {
     this.statisticsService.getUsersCount().subscribe({
       next: (count) => {
-        console.log("count is " + count);
+        //console.log("count is " + count);
         this.usersCount = count;
       },
       error: (error) => {
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit{
   }
 
   get userName(): string {
-    console.log(this.token);
+   // console.log(this.token);
     return this.user.FirstName + ' ' + this.user.LastName;
   }
 }
