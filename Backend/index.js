@@ -19,16 +19,39 @@ dotenv.config();
 process.env.TOKEN_KEY;
 
 const app = express();
-
 const cors = require('cors');
+
+/*
+let server = http.createServer(app);
+
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+app.set('socket', io)*/
+
 app.use(cors()); 
 
 let server = http.createServer(app);
 
+
 socket.initializeSocket(server);
+
 
 socket.getIo();
 
+
+/*const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+});*/
+
+
+socket.getIo().emit('join');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

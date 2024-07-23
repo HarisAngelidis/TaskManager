@@ -29,7 +29,7 @@ async function getAllTaskItemsByTaskId(req, res) {
   }
 }
 
-async function addTask(req, res) {
+/*async function addTask(req, res) {
   const {title, description} = req.body;
   const user = req.user;
   let userId = null;
@@ -43,7 +43,29 @@ async function addTask(req, res) {
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
   }
+}*/
+
+async function addTask(req, res) {
+  const { title, description } = req.body;
+  const user = req.user;
+  let userId = null;
+
+  try {
+    if (user.UserId === +req.params.id) {
+      userId = user.UserId;
+    }
+
+    const result = await taskService.addTask(userId, title, description);
+    const io = socket.getIo();
+    io.emit('newTask', { title, description }
+    );
+
+    res.status(200).json({ id: result });
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
 }
+
 async function addTaskItem(req, res) {
   const {title} = req.body;
   const { id } = req.params;
