@@ -13,8 +13,8 @@ export class WebsocketService {
  }
 
  
- connectSocket(message: any) {
-  this.webSocket.emit('connect', message);
+connectSocket(message: any) {
+  this.webSocket.connect(message);
  }
 
 
