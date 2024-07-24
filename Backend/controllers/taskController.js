@@ -56,11 +56,24 @@ async function addTask(req, res) {
     }
 
     const result = await taskService.addTask(userId, title, description);
+
+    await taskService.addTaskNotification(userId,title,description);
     const io = socket.getIo();
     io.emit('newTask', { title, description }
     );
 
     res.status(200).json({ id: result });
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
+}
+
+async function getTaskNotifications(req, res) {
+  
+  try {
+    
+    const result = await taskService.getTaskNotifications();
+    res.status(200).json(result);
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
   }
@@ -78,6 +91,8 @@ async function addTaskItem(req, res) {
     res.status(500).json({ msg: `Something went wrong` });
   }
 }
+
+
 
 async function updateTask(req, res) {
   const { userId, title, description } = req.body;
@@ -241,5 +256,6 @@ module.exports = {
   deleteTaskItem,
   countTasks,
   countCompletedTasks,
-  countPendingTasks
+  countPendingTasks,
+  getTaskNotifications
 };

@@ -9,6 +9,7 @@ router.get(path2,taskController.getAllTaskItemsByTaskId);
 router.get('/api/tasks/count', taskController.countTasks);
 router.get('/api/tasks/countC', taskController.countCompletedTasks);
 router.get('/api/tasks/countP', taskController.countPendingTasks);
+router.get('/api/tasks/Notifications', taskController.getTaskNotifications);
 router.get(path, verifyToken, taskController.getAllTasks);
 router.post(path, verifyToken,taskController.addTask);
 router.post(path2,taskController.addTaskItem);

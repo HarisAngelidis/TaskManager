@@ -92,6 +92,25 @@ function countPendingTasks(){
 
 }
 
+function countPendingTasks(){
+
+  const query = 'SELECT count(statusId) FROM tasks where statusId = 1';
+  const values = [];
+  return queryDatabase(query, values);
+
+}
+function addTaskNotification(userId,title,description) {
+  const query = `INSERT INTO notifications (userId, title,description) VALUES (?, ?,?)`;
+  const values = [userId, title,description];
+  return queryDatabase(query, values).then(result => result.insertId);
+}
+
+function getTaskNotifications() {
+  const query = `select * from  notifications`;
+  const values = [];
+  return queryDatabase(query, values);
+}
+
 async function addTaskFile(taskId, filePath) {
   const sql = 'UPDATE tasks SET file_path = ? WHERE id = ?';
   await queryDatabase(sql, [filePath, taskId]);
@@ -125,5 +144,7 @@ module.exports = {
   deleteTaskFile,
   countTasks,
   countCompletedTasks,
-  countPendingTasks
+  countPendingTasks,
+  addTaskNotification,
+  getTaskNotifications
 };
