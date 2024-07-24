@@ -7,6 +7,12 @@
   
     <table mat-table [dataSource]="dataSource" matSort>
   
+        <ng-container matColumnDef="notificationId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Notification Id </th>
+            <td mat-cell *matCellDef="let notification"> 
+                <a [routerLink]="['/menu/task', notification.NotificationId]">{{notification.NotificationId}}</a> </td>
+          </ng-container>
+
       <ng-container matColumnDef="userId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> User Id </th>
         <td mat-cell *matCellDef="let notification"> {{notification.userId}} </td>

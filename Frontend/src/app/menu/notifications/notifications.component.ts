@@ -32,7 +32,7 @@ import { TaskService } from '../../services/task.service';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['userId','title','description'];
+  displayedColumns: string[] = ['notificationId','userId','title','description'];
   dataSource = new MatTableDataSource<any>([]);
   isAdmin: boolean = false;
   storedUser = localStorage.getItem('authUser');

@@ -7,6 +7,7 @@ import { ProfileComponent } from './menu/profile/profile.component';
 import { ResetPassComponent } from './pages/reset-pass/reset-pass.component';
 import { Routes } from '@angular/router';
 import { SignupComponent } from './pages/signup/signup.component';
+import { TaskComponent } from './menu/task/task.component';
 import { UsersComponent } from './menu/users/users.component';
 
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
           { path: 'profile', component: ProfileComponent },
           { path: 'users', component: UsersComponent },
           { path: 'notifications', component: NotificationsComponent },
+          { path: 'task/:id', component: TaskComponent },
           
           //{ path: '', redirectTo: '/home', pathMatch: 'full' }
         ]

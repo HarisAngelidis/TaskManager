@@ -66,6 +66,10 @@ export class TaskService {
     return this.http.get(`${this.baseUrl}/Notifications`);
   }
 
+  getTaskNotification(notId : number): Observable<any> {
+    return this.http.get(`http://localhost:8000/api/tasks/Notification/${notId}`);
+  }
+
  
   
 }
