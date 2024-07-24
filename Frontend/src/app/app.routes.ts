@@ -2,6 +2,7 @@ import { HomeComponent } from './menu/home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MyTasksComponent } from './menu/myttasks/myttasks.component';
+import { NotificationsComponent } from './menu/notifications/notifications.component';
 import { ProfileComponent } from './menu/profile/profile.component';
 import { ResetPassComponent } from './pages/reset-pass/reset-pass.component';
 import { Routes } from '@angular/router';
@@ -25,6 +26,7 @@ export const routes: Routes = [
           { path: 'tasks', component: MyTasksComponent },
           { path: 'profile', component: ProfileComponent },
           { path: 'users', component: UsersComponent },
+          { path: 'notifications', component: NotificationsComponent },
           
           //{ path: '', redirectTo: '/home', pathMatch: 'full' }
         ]

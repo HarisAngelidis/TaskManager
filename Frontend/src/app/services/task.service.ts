@@ -62,6 +62,10 @@ export class TaskService {
     return this.http.delete(`${this.baseUrl}/${taskId}/file`);
   }
 
+  getTaskNotifications(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/Notifications`);
+  }
+
  
   
 }

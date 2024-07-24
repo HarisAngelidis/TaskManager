@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, RouterOutlet } from '@angular/router';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
@@ -18,11 +18,11 @@ const config: SocketIoConfig = {url: '', options: {}}
 })
 
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,OnDestroy {
 
   showMenu: boolean = true;
 
-  constructor(private router: Router, ){//private WebsocketService: WebsocketService) {
+  constructor(private router: Router,private WebsocketService: WebsocketService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showMenu = !(event.urlAfterRedirects.includes('/login') || event.urlAfterRedirects.includes('/signup'));
@@ -31,13 +31,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.initializeSocketConnection();
+    
   }
 
-  /*initializeSocketConnection() {
-    this.WebsocketService.connectSocket('message');
-    this.WebsocketService.emitEvent('join', 'admin');
-   }*/
+  ngOnDestroy(): void {
+    
+  }
 
 
 
