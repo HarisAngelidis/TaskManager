@@ -57,9 +57,10 @@ async function addTask(req, res) {
 
     const result = await taskService.addTask(userId, title, description);
 
-    await taskService.addTaskNotification(userId,title,description);
+    const notId = await taskService.addTaskNotification(userId,title,description);
+    console.log(notId);
     const io = socket.getIo();
-    io.emit('newTask', { title, description }
+    io.emit('newTask', { notId,title, description }
     );
 
     res.status(200).json({ id: result });
@@ -73,6 +74,19 @@ async function getTaskNotifications(req, res) {
   try {
     
     const result = await taskService.getTaskNotifications();
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ msg: `Something went wrong` });
+  }
+}
+
+async function getTaskNotification(req, res) {
+
+  const { id } = req.params;
+  
+  try {
+    
+    const result = await taskService.getTaskNotification(id);
     res.status(200).json(result);
   } catch (err) {
     res.status(500).json({ msg: `Something went wrong` });
@@ -257,5 +271,6 @@ module.exports = {
   countTasks,
   countCompletedTasks,
   countPendingTasks,
-  getTaskNotifications
+  getTaskNotifications,
+  getTaskNotification
 };

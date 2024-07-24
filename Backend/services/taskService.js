@@ -111,6 +111,12 @@ function getTaskNotifications() {
   return queryDatabase(query, values);
 }
 
+function getTaskNotification(id) {
+  const query = `select * from  notifications where NotificationId = ?`;
+  const values = [id];
+  return queryDatabase(query, values);
+}
+
 async function addTaskFile(taskId, filePath) {
   const sql = 'UPDATE tasks SET file_path = ? WHERE id = ?';
   await queryDatabase(sql, [filePath, taskId]);
@@ -146,5 +152,6 @@ module.exports = {
   countCompletedTasks,
   countPendingTasks,
   addTaskNotification,
-  getTaskNotifications
+  getTaskNotifications,
+  getTaskNotification
 };
