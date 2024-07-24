@@ -38,7 +38,7 @@ CREATE TABLE `TaskItems` (
 
 LOCK TABLES `TaskItems` WRITE;
 /*!40000 ALTER TABLE `TaskItems` DISABLE KEYS */;
-INSERT INTO `TaskItems` VALUES (3,17,'taskitme3'),(6,16,'Σφουγγάρισμα'),(7,16,'Σκούπα'),(8,16,'Ξεσκόνισμα'),(9,16,'Τζάμια'),(11,17,'asd');
+INSERT INTO `TaskItems` VALUES (6,16,'Σφουγγάρισμα'),(7,16,'Σκούπα'),(8,16,'Ξεσκόνισμα'),(9,16,'Τζάμια');
 /*!40000 ALTER TABLE `TaskItems` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-23  9:45:55
+-- Dump completed on 2024-07-24 13:56:11

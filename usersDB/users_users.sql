@@ -37,7 +37,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `users_ibfk_1` (`RoleId`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `UserRole` (`RoleId`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Papadopouloss','Kostas',20,'2024-07-10','papad1','123',1,'xangelidis100@gmail.com'),(2,'Tsipras','Alexis',49,'1974-07-28','kolotoumbas','123',2,'asdkamlsd@gmail.com'),(3,'Papadopoulos','Kostas',20,'2003-12-31','papad2','123',2,'tyxaioemail@gmail.com'),(54,'test',NULL,NULL,NULL,'test','123',2,'test@gmail.com');
+INSERT INTO `users` VALUES (1,'Papadopoulos','Kostas',20,'2024-07-10','papad1','123',1,'xangelidis100@gmail.com'),(2,'Tsipras','Alexis',49,'1974-07-28','kolotoumbas','123',2,'asdkamlsd@gmail.com'),(3,'Papadopoulos','Kostas',20,'2003-12-31','papad2','123',2,'tyxaioemail@gmail.com'),(54,'test',NULL,NULL,NULL,'test','123',2,'test@gmail.com'),(55,'sd',NULL,NULL,NULL,'asd','asd',2,'ads@asd');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-23  9:45:56
+-- Dump completed on 2024-07-24 13:56:11

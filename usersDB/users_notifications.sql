@@ -16,28 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tasksStatus`
+-- Table structure for table `notifications`
 --
 
-DROP TABLE IF EXISTS `tasksStatus`;
+DROP TABLE IF EXISTS `notifications`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tasksStatus` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `status` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `notifications` (
+  `userId` int DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tasksStatus`
+-- Dumping data for table `notifications`
 --
 
-LOCK TABLES `tasksStatus` WRITE;
-/*!40000 ALTER TABLE `tasksStatus` DISABLE KEYS */;
-INSERT INTO `tasksStatus` VALUES (2,'completed'),(1,'pending');
-/*!40000 ALTER TABLE `tasksStatus` ENABLE KEYS */;
+LOCK TABLES `notifications` WRITE;
+/*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` VALUES (1,'test','test'),(2,'test1','teste1'),(2,'sdsd','sds'),(1,'1','1'),(1,'2','2'),(1,'3','3'),(1,'4','4'),(1,'σδ','σδ'),(2,'σδ','σδ'),(2,'τεστ1','σδ');
+/*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-24 13:56:11
+-- Dump completed on 2024-07-24 13:56:10
