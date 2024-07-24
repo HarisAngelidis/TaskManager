@@ -34,7 +34,7 @@ CREATE TABLE `tasks` (
   KEY `tasksStatus_idx` (`statusId`),
   CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`UserId`),
   CONSTRAINT `tasksStatus` FOREIGN KEY (`statusId`) REFERENCES `tasksStatus` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (16,'Καθαρισμός Σπιτιού','Πάτα στον τίτλο για λεπτομέρειες',1,2,'uploads/Parembolh_6.jpg'),(23,'asd','asd',1,1,NULL),(44,'test','test',2,1,NULL),(54,'τεστ1','σδ',2,1,NULL);
+INSERT INTO `tasks` VALUES (16,'Καθαρισμός Σπιτιού','Πάτα στον τίτλο για λεπτομέρειες',1,2,'uploads/Parembolh_6.jpg'),(23,'asd','asd',1,1,NULL),(44,'test','test',2,1,NULL),(54,'τεστ1','σδ',2,1,NULL),(55,'test1','test1',2,1,NULL),(65,'test','test',1,1,NULL),(66,'we','we',1,1,NULL),(67,'testing','testing',2,1,NULL),(68,'h','h',2,1,NULL);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-24 13:56:11
+-- Dump completed on 2024-07-24 16:25:26

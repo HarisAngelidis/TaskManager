@@ -25,8 +25,10 @@ DROP TABLE IF EXISTS `notifications`;
 CREATE TABLE `notifications` (
   `userId` int DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `description` varchar(255) DEFAULT NULL,
+  `NotificationId` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`NotificationId`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +37,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
-INSERT INTO `notifications` VALUES (1,'test','test'),(2,'test1','teste1'),(2,'sdsd','sds'),(1,'1','1'),(1,'2','2'),(1,'3','3'),(1,'4','4'),(1,'σδ','σδ'),(2,'σδ','σδ'),(2,'τεστ1','σδ');
+INSERT INTO `notifications` VALUES (1,'df','df',1),(1,'sd','sd',2),(1,'sd','sd',3),(1,'sd','sd',4),(1,'sd','sd',5),(1,'sd','sd',6),(1,'sd','sda',7),(1,'sda','asd',8),(1,'asdsad','adsdas',9),(1,'test','test',10),(1,'we','we',11),(2,'testing','testing',12),(2,'h','h',13);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-24 13:56:10
+-- Dump completed on 2024-07-24 16:25:26
