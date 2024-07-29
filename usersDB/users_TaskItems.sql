@@ -29,7 +29,7 @@ CREATE TABLE `TaskItems` (
   PRIMARY KEY (`itemId`),
   KEY `taskitems_ibfk_1` (`taskId`),
   CONSTRAINT `taskitems_ibfk_1` FOREIGN KEY (`taskId`) REFERENCES `tasks` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `TaskItems` (
 
 LOCK TABLES `TaskItems` WRITE;
 /*!40000 ALTER TABLE `TaskItems` DISABLE KEYS */;
-INSERT INTO `TaskItems` VALUES (6,16,'Σφουγγάρισμα'),(7,16,'Σκούπα'),(8,16,'Ξεσκόνισμα'),(9,16,'Τζάμια');
+INSERT INTO `TaskItems` VALUES (6,16,'Σφουγγάρισμα'),(7,16,'Σκούπα'),(8,16,'Ξεσκόνισμα'),(9,16,'Τζάμια'),(12,69,'Σκούπα'),(13,69,'Σφουγγάρισμα'),(14,69,'Τζάμια');
 /*!40000 ALTER TABLE `TaskItems` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-24 16:25:26
+-- Dump completed on 2024-07-29 15:05:56

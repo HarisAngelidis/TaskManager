@@ -28,7 +28,7 @@ CREATE TABLE `notifications` (
   `description` varchar(255) DEFAULT NULL,
   `NotificationId` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`NotificationId`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
-INSERT INTO `notifications` VALUES (1,'df','df',1),(1,'sd','sd',2),(1,'sd','sd',3),(1,'sd','sd',4),(1,'sd','sd',5),(1,'sd','sd',6),(1,'sd','sda',7),(1,'sda','asd',8),(1,'asdsad','adsdas',9),(1,'test','test',10),(1,'we','we',11),(2,'testing','testing',12),(2,'h','h',13);
+INSERT INTO `notifications` VALUES (1,'df','df',1),(1,'sd','sd',2),(1,'sd','sd',3),(1,'sd','sd',4),(1,'sd','sd',5),(1,'sd','sd',6),(1,'sd','sda',7),(1,'sda','asd',8),(1,'asdsad','adsdas',9),(1,'test','test',10),(1,'we','we',11),(2,'testing','testing',12),(2,'h','h',13),(58,'Καθαρισμός Σπιτιού','πάτα τον τίτλο για να εμφανιζστούν οι υποεργασίες\n',14),(58,'τεστ','τεστ',15),(58,'soket','soket',16),(58,'soket','soket',17),(58,'socket','socket',18);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-24 16:25:26
+-- Dump completed on 2024-07-29 15:05:56
