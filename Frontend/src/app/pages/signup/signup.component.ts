@@ -37,9 +37,10 @@ public onSubmit() {
           console.log(data);
           this.router.navigate(['/login']);
         },
-        error: (err) => console.log(err)
+        error: (err) => alert("Υπάρχει ήδη το Username")
       });
   }
+  else {alert("Βεβαιωθείτε ότι έχετε συμπληρώσει όλα τα στοιχεία και ότι έχετε εισάγει έγκυρη διεύθυνση email.")}
 }
 
 
