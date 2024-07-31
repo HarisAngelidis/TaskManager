@@ -47,7 +47,8 @@ export class SidebarComponent implements OnInit,OnDestroy {
           this.notifications.shift(); 
         }
         this.notifications.push(`New Task Created: ${data.title}`);
-        this.showSnackbar(`New Task Created: ${data.title}`, data);
+        if(role===1){
+        this.showSnackbar(`New Task Created: ${data.title}`, data);}
     });}
   
   }
